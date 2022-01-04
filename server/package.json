@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.1.1",
+    "koa2-cors": "^2.0.6",
+    "jsonwebtoken": "^8.5.1",
+    "kernel": "file:./kernel"
+  }
+}
