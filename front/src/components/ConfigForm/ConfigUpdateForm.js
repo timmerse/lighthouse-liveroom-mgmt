@@ -22,7 +22,7 @@ function ConfigUpdateForm(props) {
   const redirectToLogin = () => {
     props.updateTitle('Login')
     props.history.push('/login');
-  }
+  };
 
   const sendDetailsToServer = () => {
     if (state.appid.length && state.secret.length) {
@@ -30,12 +30,14 @@ function ConfigUpdateForm(props) {
       const username = localStorage.getItem(LOGIN_ACCESS_USERNAME)
       const token = localStorage.getItem(LOGIN_ACCESS_TOKEN);
       if (!token || !username) redirectToLogin();
+
       const payload = {
         "username": username,
         'token': token,
         "sdkAppId": state.appid,
         "sdkSecret": state.secret,
-      }
+      };
+
       axios.post(API_BASE_URL + '/service/update_config', payload)
         .then(function (response) {
           if (response.status === 200) {
@@ -59,11 +61,13 @@ function ConfigUpdateForm(props) {
     } else {
       props.showError('Please enter valid TRTC/IM sdk AppId and Secret');
     }
-  }
+  };
+
   const redirectToDetail = () => {
     props.updateTitle('Detail')
     props.history.push('/detail');
-  }
+  };
+
   const handleSubmitClick = (e) => {
     e.preventDefault();
     if (!state.appid) {
@@ -74,11 +78,11 @@ function ConfigUpdateForm(props) {
     } else {
       sendDetailsToServer();
     }
-  }
+  };
 
   const handleBackClick = (e) => {
     redirectToDetail();
-  }
+  };
 
   return (
     <div className="card col-12 col-lg-4 login-card mt-2 hv-center">
@@ -128,7 +132,7 @@ function ConfigUpdateForm(props) {
         {state.successMessage}
       </div>
     </div>
-  )
+  );
 }
 
 export default withRouter(ConfigUpdateForm);

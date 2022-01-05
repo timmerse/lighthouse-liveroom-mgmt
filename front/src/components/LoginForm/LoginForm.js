@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import './LoginForm.css';
 import {API_BASE_URL, LOGIN_ACCESS_TOKEN, LOGIN_ACCESS_USERNAME} from '../../constants/consts';
-import {withRouter, useLocation} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 function LoginForm(props) {
   const [state, setState] = useState({

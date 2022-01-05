@@ -4,11 +4,13 @@ function AlertComponent(props) {
     const [modalDisplay, toggleDisplay] = useState('none');
     const openModal = () => {
         toggleDisplay('block');
-    }
+    };
+
     const closeModal = () => {
         toggleDisplay('none');
         props.hideError(null);
-    }
+    };
+
     useEffect(() => {
         if(props.errorMessage !== null) {
             openModal()
@@ -32,7 +34,7 @@ function AlertComponent(props) {
             </div>
 
         </div>
-    )
+    );
 }
 
 export default AlertComponent
