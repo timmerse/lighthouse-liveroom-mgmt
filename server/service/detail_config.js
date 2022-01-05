@@ -13,5 +13,5 @@ exports.main_handler = async (ctx) => {
 
   await auth.authByUserToken(q.token, q.username);
   const config = localConfig.loadLocalConfig();
-  return errors.data(config, `update config ok`);
+  return errors.data(config, `detail config ok`);
 };
