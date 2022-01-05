@@ -22,8 +22,7 @@ app.use(router.routes());
 
 // Run all modules in one nodejs server.
 require('./user/router').create(router);
-require('./config/router').create(router);
-
+require('./service/router').create(router);
 
 app.listen(9000, () => {
   console.log(`Server start on http://localhost:9000`);

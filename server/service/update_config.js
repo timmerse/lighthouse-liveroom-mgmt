@@ -16,7 +16,7 @@ exports.main_handler = async (ctx) => {
   await auth.authByUserToken(q.token, q.username);
 
   const oldConfig = localConfig.loadLocalConfig();
-  const newConfig = {...oldConfig};
+  const newConfig = Object.assign({}, oldConfig);
 
   newConfig.TRTC_TIM_APPID = q.sdkAppId;
   newConfig.TRTC_TIM_SECRET = q.sdkSecret;

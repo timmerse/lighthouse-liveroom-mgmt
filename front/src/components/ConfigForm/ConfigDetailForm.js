@@ -20,7 +20,7 @@ function ConfigForm(props) {
       "username": username,
       "token": token,
     };
-    axios.post(API_BASE_URL + '/configs/detail_config', payload)
+    axios.post(API_BASE_URL + '/service/detail_config', payload)
       .then(function (response) {
         if (response.status === 200) {
           // if token invalid

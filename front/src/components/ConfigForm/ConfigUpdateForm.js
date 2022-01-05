@@ -36,7 +36,7 @@ function ConfigUpdateForm(props) {
         "sdkAppId": state.appid,
         "sdkSecret": state.secret,
       }
-      axios.post(API_BASE_URL + '/configs/update_config', payload)
+      axios.post(API_BASE_URL + '/service/update_config', payload)
         .then(function (response) {
           if (response.status === 200) {
             const code = response.data.errorCode;
