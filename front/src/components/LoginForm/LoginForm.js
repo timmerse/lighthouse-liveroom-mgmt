@@ -2,21 +2,22 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import './LoginForm.css';
 import {API_BASE_URL, LOGIN_ACCESS_TOKEN, LOGIN_ACCESS_USERNAME} from '../../constants/consts';
-import {withRouter} from "react-router-dom";
+import {withRouter, useLocation} from "react-router-dom";
 
 function LoginForm(props) {
   const [state, setState] = useState({
     username: "",
     password: "",
     successMessage: null
-  })
+  });
+
   const handleChange = (e) => {
     const {id, value} = e.target
     setState(prevState => ({
       ...prevState,
       [id]: value
     }));
-  }
+  };
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
@@ -47,11 +48,13 @@ function LoginForm(props) {
       .catch(function (error) {
         console.log(error);
       });
-  }
+  };
+
   const redirectToDetail = () => {
     props.updateTitle('Detail')
     props.history.push('/detail');
-  }
+  };
+
   return (
     <div className="card col-12 col-lg-4 login-card mt-2 hv-center">
       <form>
@@ -92,7 +95,7 @@ function LoginForm(props) {
         <span>Dont have an account? go to the console to get it</span>
       </div>
     </div>
-  )
+  );
 }
 
 export default withRouter(LoginForm);
