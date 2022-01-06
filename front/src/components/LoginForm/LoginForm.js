@@ -3,6 +3,7 @@ import axios from 'axios';
 import './LoginForm.css';
 import {API_BASE_URL, LOGIN_ACCESS_TOKEN, LOGIN_ACCESS_USERNAME} from '../../constants/consts';
 import {withRouter} from "react-router-dom";
+import Button from '@mui/material/Button';
 
 function LoginForm(props) {
   const [state, setState] = useState({
@@ -21,6 +22,15 @@ function LoginForm(props) {
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
+    if (!state.username) {
+      props.showError('Please enter valid username');
+      return;
+    }
+    if (!state.password) {
+      props.showError('Please enter valid password');
+      return;
+    }
+
     const payload = {
       "username": state.username,
       "password": state.password,
@@ -81,12 +91,11 @@ function LoginForm(props) {
         </div>
         <div className="form-check">
         </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
+        <Button
+          variant="outlined"
           onClick={handleSubmitClick}
         >LOGIN
-        </button>
+        </Button>
       </form>
       <div className="alert alert-success mt-2" style={{display: state.successMessage ? 'block' : 'none'}} role="alert">
         {state.successMessage}

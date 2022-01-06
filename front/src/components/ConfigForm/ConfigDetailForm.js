@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import './ConfigForm.css';
 import {API_BASE_URL, LOGIN_ACCESS_TOKEN, LOGIN_ACCESS_USERNAME} from '../../constants/consts';
 import {withRouter} from "react-router-dom";
 import CustomTable from '../List/CustomTable';
+import AlertDialog from "../Dialog/AlertDialog";
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 function ConfigForm(props) {
   const [items, setItems] = useState({});
@@ -57,23 +59,54 @@ function ConfigForm(props) {
     props.history.push('/config');
   };
 
-  const handleSubmitClick = (e) => {
+  const handleEditClick = (e) => {
     e.preventDefault();
     redirectToUpdate();
   };
 
+
+  const sendRestartServiceToServer = () => {
+    const username = localStorage.getItem(LOGIN_ACCESS_USERNAME)
+    const token = localStorage.getItem(LOGIN_ACCESS_TOKEN);
+    if (!token || !username) redirectToLogin();
+
+    const payload = {
+      "username": username,
+      "token": token,
+    };
+
+    axios.post(API_BASE_URL + '/service/restart_service', payload)
+      .then(function (response) {
+        if (response.status === 200) {
+          // if token invalid
+          if (response.data.errorCode !== 0) props.showError(response.data.errorMessage);
+        } else {
+          props.showError("we got some error!");
+        }
+      }).catch(function (error) {
+      console.log(error);
+    });
+  };
+
+  const handleRestart = () => {
+    sendRestartServiceToServer();
+  };
+
   return (
-    <div className>
-      <form>
-        <CustomTable items={items}/>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={handleSubmitClick}
-        >
-          EDIT
-        </button>
-      </form>
+    <div>
+      <CustomTable items={items}/>
+
+      <ButtonGroup variant="outlined" aria-label="outlined primary button group" style={{margin : '20px'}}>
+        <Button variant="outlined" onClick={handleEditClick}>
+          Edit
+        </Button>
+        <AlertDialog
+          onConfirm={handleRestart}
+          title='Notice!'
+          context='continue restart service? the service will be restart now!'
+          text='Restart'
+        />
+      </ButtonGroup>
     </div>
   );
 }

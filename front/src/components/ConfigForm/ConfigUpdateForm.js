@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import './ConfigForm.css';
 import {API_BASE_URL, LOGIN_ACCESS_TOKEN, LOGIN_ACCESS_USERNAME} from '../../constants/consts';
 import {withRouter} from "react-router-dom";
+import Button from '@mui/material/Button';
 
 function ConfigUpdateForm(props) {
   const [state, setState] = useState({
@@ -111,20 +111,18 @@ function ConfigUpdateForm(props) {
           />
         </div>
         <div>
-          <button
-            type="submit"
-            className="btn btn-primary"
+          <Button
+            variant="outlined"
             onClick={handleSubmitClick}
           >
             Update
-          </button>
-          <button
-            type="submit"
-            className="btn btn-primary"
+          </Button>
+          <Button
+            variant="outlined"
             onClick={handleBackClick}
           >
             Back
-          </button>
+          </Button>
         </div>
 
       </form>
