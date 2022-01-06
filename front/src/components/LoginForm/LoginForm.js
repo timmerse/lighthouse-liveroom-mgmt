@@ -12,6 +12,8 @@ function LoginForm(props) {
     successMessage: null
   });
 
+  props.updateTitle('Login');
+
   const handleChange = (e) => {
     const {id, value} = e.target
     setState(prevState => ({

@@ -10,6 +10,8 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 function ConfigForm(props) {
   const [items, setItems] = useState({});
 
+  props.updateTitle('Detail');
+
   const getDetailsFromServer = () => {
     props.showError(null);
     const username = localStorage.getItem(LOGIN_ACCESS_USERNAME)

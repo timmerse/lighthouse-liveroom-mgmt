@@ -5,11 +5,9 @@ import {withRouter} from "react-router-dom";
 import Button from '@mui/material/Button';
 
 function ConfigUpdateForm(props) {
-  const [state, setState] = useState({
-    appid: "",
-    secret: "",
-    successMessage: null
-  });
+  const [state, setState] = useState({});
+
+  props.updateTitle('Update');
 
   const handleChange = (e) => {
     const {id, value} = e.target;
