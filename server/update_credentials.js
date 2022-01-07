@@ -10,9 +10,9 @@ const CredentialsPath = '~/credentials.txt';
 function doUpdateCredentials() {
   const user = localUser.readUserFromFile();
   exec(`[ ! -f ${CredentialsPath} ] && echo '#Credentials' >> ${CredentialsPath} || echo skip create`);
-  exec(`sed -i '/light-house-config_/d' ${CredentialsPath}`);
-  exec(`sed -i '$a light-house-config_username=${user.username}' ${CredentialsPath}`);
-  exec(`sed -i '$a light-house-config_password=${user.password}' ${CredentialsPath}`);
+  exec(`sed -i '/lighthouse-config_/d' ${CredentialsPath}`);
+  exec(`sed -i '$a lighthouse-config_username=${user.username}' ${CredentialsPath}`);
+  exec(`sed -i '$a lighthouse-config_password=${user.password}' ${CredentialsPath}`);
 }
 
 module.exports = function () {
