@@ -10,6 +10,7 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const Cors = require('koa2-cors');
 const BodyParser = require('koa-bodyparser');
+const createUser = require('./update_credentials');
 
 const app = new Koa();
 
@@ -23,6 +24,9 @@ app.use(router.routes());
 // Run all modules in one nodejs server.
 require('./user/router').create(router);
 require('./service/router').create(router);
+
+// try to create user very load index
+createUser();
 
 app.listen(9998, () => {
   console.log(`Server start on http://localhost:9998`);
