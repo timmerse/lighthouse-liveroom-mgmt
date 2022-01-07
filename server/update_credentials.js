@@ -1,8 +1,6 @@
 'use strict';
 
-const path = require('path');
 const config = require('kernel/config');
-const fs = require("fs");
 const localUser = require('./user/load_user_config').create(config.localUserConfigPath);
 const exec = require('child_process').execSync;
 
