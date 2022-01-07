@@ -11,13 +11,14 @@ const CredentialsPath = './credentials.txt';
 // note this command can not run in mac
 function doUpdateCredentials() {
   const user = localUser.readUserFromFile();
-  const str = `light-house-config_username=${user.username}\nlight-house-config_password=${user.password}`
 
   if (!fs.existsSync(CredentialsPath)) {
-    exec(`touch ${CredentialsPath}`);
+    exec(`echo '#Credentials' >> ${CredentialsPath}`);
   }
+  
   exec(`sed -i '/light-house-config_/d' ${CredentialsPath}`);
-  exec(`sed -i '$a ${str}' ${CredentialsPath}`);
+  exec(`sed -i '$a light-house-config_username=${user.username}' ${CredentialsPath}`);
+  exec(`sed -i '$a light-house-config_password=${user.password}' ${CredentialsPath}`);
 }
 
 module.exports = function () {
