@@ -16,7 +16,7 @@ function App() {
   const [title, updateTitle] = useState(null);
   const [errorMessage, updateErrorMessage] = useState(null);
   return (
-    <Router>
+    <Router basename="/manage">
     <div className="App">
       <Header title={title}/>
         <div className="container d-flex align-items-center flex-column">
