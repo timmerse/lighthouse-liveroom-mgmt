@@ -4,8 +4,8 @@ const fs = require('fs');
 const sysPath = require('path');
 
 const defaultConfig = {
-  TRTC_TIM_APPID: 'xxxx',
-  TRTC_TIM_SECRET: 'xxxx',
+  TRTC_TIM_APPID: 'xxxxxxxxxxxxxxxx',
+  TRTC_TIM_SECRET: 'xxxxxxxxxxxxxxxx',
   MYSQL_HOST: '127.0.0.1',
   MYSQL_PORT: '3306',
   MYSQL_DB: 'demos',
