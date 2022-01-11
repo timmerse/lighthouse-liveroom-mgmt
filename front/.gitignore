@@ -4,13 +4,12 @@ ls# See https://help.github.com/articles/ignoring-files/ for more about ignoring
 /node_modules
 /.pnp
 .pnp.js
-.idea
+
 # testing
 /coverage
 
 # production
 /build
-/conf/env
 
 # misc
 .DS_Store
